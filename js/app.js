@@ -107,11 +107,13 @@ const prioritize_item = function() {
         element_prioritize = row[z]
         prioritize = true;
         priority_button[z].style.backgroundColor = "yellow";
+        list_item[z].style.backgroundColor = "yellow";
         elements[z].priority = true;
       }
       else if (elements[z].priority) {
         element_prioritize = row[z]
         priority_button[z].style.backgroundColor = "white";
+        list_item[z].style.backgroundColor = "white";
         elements[z].priority = false;
       }
     };
