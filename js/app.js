@@ -67,8 +67,9 @@ const remove_item = function() {
   for (let i = 0; i < remove_button.length; i++) {
     remove_button[i].onclick = function() {
         removed = true;
-        list_item[i].style.backgroundColor = "#ff0000";
-        remove_button[i].style.backgroundColor = "#ff0000";
+        let remove_element = row[i];
+        remove_element.remove();
+        elements.splice(i, 1);
     }
     if (removed) {
         break;
@@ -106,25 +107,12 @@ const prioritize_item = function() {
         element_prioritize = row[z]
         prioritize = true;
         priority_button[z].style.backgroundColor = "yellow";
-        row[0].before(element_prioritize);
         elements[z].priority = true;
-
-        const objectToMove = elements[z];
-
-        elements.splice(z, 1);
-        elements.unshift(objectToMove);
-        prioritize = true;
       }
       else if (elements[z].priority) {
         element_prioritize = row[z]
         priority_button[z].style.backgroundColor = "white";
-        row[elements.length - 1].after(element_prioritize);
         elements[z].priority = false;
-
-        let element_move = elements[z];
-        elements.splice(z, 1);
-        elements.push(element_move);
-        prioritize = true;
       }
     };
     if (prioritize) {
